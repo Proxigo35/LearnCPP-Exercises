@@ -1,0 +1,1 @@
+std::vector variable {1, 4, 9, 16, 25};
