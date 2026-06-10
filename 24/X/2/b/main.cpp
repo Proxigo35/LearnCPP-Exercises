@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string_view>
+#include <string>
+
+class Fruit {
+	std::string m_name {};
+	std::string m_colour {};
+
+public:
+
+	Fruit(std::string_view name = "", std::string_view colour = "")
+		: m_name {name}
+		, m_colour {colour}
+	{}
+
+	const std::string& getName() const {return m_name;}
+	const std::string& getColour() const {return m_colour;}
+
+};
+
+class Apple : public Fruit {
+
+protected:
+	Apple(std::string_view name, std::string_view colour)
+		: Fruit {name, colour}
+	{}
+
+public:
+
+	Apple(std::string_view colour = "red")
+		: Fruit {"apple", colour}
+	{}
+
+};
+
+class Banana : public Fruit {
+
+public:
+	
+	Banana()
+		: Fruit{"banana", "yellow"}
+	{}
+
+};
+
+class GrannySmith : public Apple {
+
+public:
+
+	GrannySmith()
+		: Apple("granny smith apple", "green")
+	{}
+};
+
+int main() {
+	Apple a {"red"};
+	Banana b;
+	GrannySmith c;
+
+	std::cout << "My " << a.getName() << " is " << a.getColour() << ".\n";
+	std::cout << "My " << b.getName() << " is " << b.getColour() << ".\n";
+	std::cout << "My " << c.getName() << " is " << c.getColour() << ".\n";
+
+	return 0;
+}
